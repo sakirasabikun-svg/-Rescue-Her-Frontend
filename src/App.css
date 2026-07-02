@@ -1,0 +1,387 @@
+/* ==========================================
+   1. Reset & Base Styles
+   ========================================== */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Segoe UI', Arial, sans-serif;
+}
+
+body {
+  background-color: #f1f5f9;
+  color: #1e293b;
+}
+
+.app-container {
+  display: flex;
+  min-height: 100vh;
+}
+
+/* ==========================================
+   2. Collapsible Sidebar Styling (Updated)
+   ========================================== */
+.sidebar {
+  width: 260px;
+  background-color: #0b1e33;
+  color: #ffffff;
+  padding: 24px 16px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  
+  /* নতুন অ্যানিমেশন লজিক: শুরুতে স্ক্রিনের বামে লুকিয়ে থাকবে */
+  position: fixed;
+  top: 0;
+  left: -280px; 
+  height: 100vh;
+  z-index: 999;
+  transition: left 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: 5px 0 25px rgba(0, 0, 0, 0.15);
+}
+
+/* যখন স্টেট true হবে তখন সাইডবার স্ক্রিনে চলে আসবে */
+.sidebar.open {
+  left: 0;
+}
+
+.logo-section h2 {
+  font-size: 22px;
+  font-weight: 700;
+  color: #ffffff;
+  margin-bottom: 4px;
+}
+
+.logo-section p {
+  font-size: 11px;
+  color: #94a3b8;
+  margin-bottom: 30px;
+}
+
+.nav-links {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  flex-grow: 1;
+}
+
+.nav-item {
+  display: flex;
+  align-items: center;
+  padding: 12px 16px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 14px;
+  color: #94a3b8;
+  transition: all 0.3s ease;
+}
+
+.nav-item.active, .nav-item:hover {
+  background-color: #10b981;
+  color: #ffffff;
+  font-weight: 600;
+}
+
+.emergency-helpline-card {
+  background-color: #064e3b;
+  border: 1px solid #10b981;
+  border-radius: 12px;
+  padding: 16px;
+  text-align: center;
+  margin-top: auto;
+}
+
+.emergency-helpline-card p {
+  font-size: 12px;
+  color: #a7f3d0;
+  margin-bottom: 6px;
+}
+
+.emergency-helpline-card h3 {
+  font-size: 28px;
+  color: #ffffff;
+  font-weight: bold;
+}
+
+/* ==========================================
+   3. Main Content Area (Updated)
+   ========================================== */
+.main-content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  background-color: #f8fafc;
+  margin-left: 0 !important; /* ফুলস্ক্রিন ভিউ নিশ্চিত করার জন্য */
+  width: 100% !important;
+  transition: all 0.3s ease;
+}
+
+/* Navbar */
+.top-navbar {
+  background-color: #ffffff;
+  height: 70px;
+  padding: 0 32px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid #e2e8f0;
+}
+
+.user-profile {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.avatar {
+  width: 35px;
+  height: 35px;
+  border-radius: 50%;
+  background-color: #cbd5e1;
+}
+
+/* Dashboard Content Grid */
+.dashboard-body {
+  padding: 32px;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.hero-grid {
+  display: grid;
+  grid-template-columns: 1.2fr 0.8fr; 
+  gap: 20px;
+  align-items: center;
+  padding: 40px;
+  border-radius: 16px;
+  border: 1px solid #e2e8f0;
+  width: 100%;
+  min-height: 320px; 
+  box-sizing: border-box;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.02);
+  position: relative;
+  overflow: hidden;
+}
+
+.hero-left h1 {
+  font-size: 36px;
+  color: #0f172a;
+}
+
+.hero-left h1 span {
+  color: #065f46;
+}
+
+.hero-left p {
+  color: #64748b;
+  margin: 12px 0 20px 0;
+}
+
+.learn-more-btn {
+  background-color: #0f172a;
+  color: #ffffff;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: 500;
+}
+
+/* ==========================================
+   4. Component Components (SOS, Contacts, etc.)
+   ========================================== */
+.sos-box {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.sos-button {
+  width: 160px;
+  height: 160px;
+  background-color: #ef4444;
+  border-radius: 50%;
+  color: #ffffff;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  font-weight: bold;
+  border: 8px solid #fee2e2;
+  box-shadow: 0 0 25px rgba(239, 68, 68, 0.4);
+  cursor: pointer;
+  transition: transform 0.2s ease;
+}
+
+.sos-button:hover {
+  transform: scale(1.05);
+}
+
+.sos-button span {
+  font-size: 32px;
+  letter-spacing: 1px;
+}
+
+.sos-button small {
+  font-size: 11px;
+  margin-top: 4px;
+  font-weight: normal;
+  opacity: 0.9;
+}
+
+.status-indicator {
+  margin-top: 16px;
+  font-size: 13px;
+  color: #059669;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-weight: 500;
+}
+
+.quick-contacts-card {
+  background: #ffffff;
+  border-radius: 16px;
+  padding: 20px;
+  border: 1px solid #f1f5f9;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+}
+
+.card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 16px;
+}
+
+.card-header h4 { font-size: 15px; color: #334155; }
+.view-all { font-size: 12px; color: #10b981; text-decoration: none; font-weight: 500; }
+
+.contact-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px 0;
+  border-bottom: 1px solid #f1f5f9;
+}
+.contact-item:last-child { border-bottom: none; }
+
+.contact-info { display: flex; align-items: center; gap: 12px; }
+.contact-avatar {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background-color: #e0f2fe;
+  color: #0369a1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+  font-size: 14px;
+}
+.contact-details h5 { font-size: 13px; color: #1e293b; }
+.contact-details p { font-size: 11px; color: #64748b; }
+
+.contact-actions { display: flex; gap: 8px; }
+.action-btn {
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  border: 1px solid #e2e8f0;
+  background: #f8fafc;
+  cursor: pointer;
+  font-size: 12px;
+}
+
+.bottom-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px;
+}
+
+.grid-card {
+  background: #ffffff;
+  border-radius: 12px;
+  padding: 16px;
+  border: 1px solid #e2e8f0;
+}
+
+.card-title-bar {
+  display: flex;
+  justify-content: space-between;
+  font-size: 13px;
+  font-weight: 600;
+  margin-bottom: 12px;
+  color: #334155;
+}
+
+.motivational-banner {
+  background: linear-gradient(90deg, #0f172a 0%, #1e293b 100%);
+  color: #ffffff;
+  padding: 16px 24px;
+  border-radius: 12px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+/* ==========================================
+   5. Interactive Buttons & Overlay Styles
+   ========================================== */
+.hamburger-btn {
+  background: #f1f5f9;
+  border: 1px solid #cbd5e1;
+  font-size: 20px;
+  padding: 6px 12px;
+  border-radius: 8px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s ease;
+  color: #0f172a;
+}
+
+.hamburger-btn:hover {
+  background: #e2e8f0;
+}
+
+.close-sidebar-btn {
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  background: rgba(255, 255, 255, 0.1);
+  border: none;
+  color: white;
+  font-size: 16px;
+  cursor: pointer;
+  padding: 5px 10px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.2s;
+}
+
+.close-sidebar-btn:hover {
+  background: rgba(255, 255, 255, 0.2);
+}
+
+.sidebar-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(15, 23, 42, 0.4);
+  /* backdrop-filter: blur(2px); */
+  z-index: 998;
+  animation: fadeIn 0.2s ease-out;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
